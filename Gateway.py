@@ -3,7 +3,7 @@ import os
 import logging
 from flask import request
 from flask import Flask
-import paho.mqtt.client as mqtt
+#import paho.mqtt.client as mqtt
 
 #client = mqtt.Client(client_id="", clean_session=True, userdata=None, transport="tcp")
 #client.connect("m11.cloudmqtt.com", 13487, 60, )
@@ -18,8 +18,8 @@ def helloWorld():
 #Post request
 @app.route('/', methods=['POST'])
 def facebookWebHook():
-    jasonDictionary = request.get_json()
-    logging.warning(jasonDictionary["name"])
+    jsonDictionary = request.get_json()
+    logging.warning(jsonDictionary["name"])
     return "Post!"
 
 app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
