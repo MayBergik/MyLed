@@ -4,8 +4,9 @@ from flask import request
 from flask import Flask
 import paho.mqtt.client as mqtt
 
-client = mqtt.Client(client_id="", clean_session=True, userdata=None, transport="tcp")
-client.connect()
+#client = mqtt.Client(client_id="", clean_session=True, userdata=None, transport="tcp")
+#client.connect("m11.cloudmqtt.com", 13487, 60, )
+
 app = Flask(__name__)
 
 #Get request
@@ -21,4 +22,4 @@ def facebookWebHook():
     return "Post!"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
