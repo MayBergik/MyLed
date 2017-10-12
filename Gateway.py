@@ -1,7 +1,7 @@
 #!flask/bin/python
 import os
 import logging
-import settings as Config
+#import settings as Config
 from flask import request
 from flask import Flask
 """
