@@ -1,19 +1,14 @@
 #!flask/bin/python
 import os
 import logging
-#import settings as Config
 from flask import request
 from flask import Flask
 import paho.mqtt.client as paho
-
 
 MQTT_HOST = os.environ.get("MQTT_HOST", '')
 MQTT_USER = os.environ.get("MQTT_USER", '')
 MQTT_PWD = os.environ.get("MQTT_PWD", '')
 MQTT_PORT = int(os.environ.get("MQTT_PORT", 5001))
-
-logging.warning("may")
-logging.warning(MQTT_USER)
 
 client = paho.Client()
 client.username_pw_set(MQTT_USER, MQTT_PWD)
@@ -23,10 +18,17 @@ client.disconnect()
 
 app = Flask(__name__)
 
+"""
 #Get request
 @app.route('/', methods=['GET'])
 def helloWorld():
     return "Hello, World!"
+"""
+
+#Get request
+@app.route('/', methods=['GET'])
+def helloWorld():
+    return request.args.get('hub.challenge')
 
 #Post request
 @app.route('/', methods=['POST'])
