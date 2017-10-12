@@ -18,17 +18,11 @@ client.disconnect()
 
 app = Flask(__name__)
 
-"""
-#Get request
-@app.route('/', methods=['GET'])
-def helloWorld():
-    return "Hello, World!"
-"""
 
 #Get request
 @app.route('/', methods=['GET'])
 def helloWorld():
-    return request.args.get('hub.challenge')
+    return "Hello, World!"
 
 #Post request
 @app.route('/', methods=['POST'])
