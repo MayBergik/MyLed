@@ -17,8 +17,8 @@ logging.warning(MQTT_USER)
 
 client = paho.Client()
 client.username_pw_set(MQTT_USER, MQTT_PWD)
-#client.connect(MQTT_HOST, MQTT_PORT)
-#client.publish("topic/test", "My message")
+client.connect(MQTT_HOST, MQTT_PORT)
+client.publish("topic/test", "My message")
 client.disconnect()
 
 app = Flask(__name__)
