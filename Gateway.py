@@ -4,15 +4,16 @@ import logging
 import settings as Config
 from flask import request
 from flask import Flask
+#import paho.mqtt.client as paho
 
-import paho.mqtt.client as paho
-
+print Config.MQTT_HOST, Config.MQTT_USER, Config.MQTT_PWD, Config.MQTT_PORT
+"""
 client = paho.Client()
 client.username_pw_set(Config.MQTT_USER, Config.MQTT_PWD)
 client.connect(Config.MQTT_HOST, Config.MQTT_PORT)
 client.publish("topic/test", "My message")
 client.disconnect()
-
+"""
 app = Flask(__name__)
 
 #Get request
