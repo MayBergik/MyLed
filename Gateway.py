@@ -5,7 +5,13 @@ import logging
 from flask import request
 from flask import Flask
 
-#print Config.MQTT_USER
+
+MQTT_HOST = os.environ.get("MQTT_HOST", '')
+MQTT_USER = os.environ.get("MQTT_USER", '')
+MQTT_PWD = os.environ.get("MQTT_PWD", '')
+MQTT_PORT = int(os.environ.get("MQTT_PORT", 5001))
+
+#print MQTT_USER
 
 """
 import paho.mqtt.client as paho
