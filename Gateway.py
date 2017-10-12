@@ -3,10 +3,13 @@ import os
 import logging
 from flask import request
 from flask import Flask
-#import paho.mqtt.client as mqtt
+import paho.mqtt.client as mqtt
 
-#client = mqtt.Client(client_id="", clean_session=True, userdata=None, transport="tcp")
-#client.connect("m11.cloudmqtt.com", 13487, 60, )
+client = mqtt.Client()
+client.username_pw_set(Config.MQTT_USER, Config.MQTT_PWD)
+client.connect(Config.MQTT_HOST, Config.MQTT_PORT)
+client.publish("topic/test", "Hello world!");
+client.disconnect();
 
 app = Flask(__name__)
 
