@@ -5,7 +5,7 @@ from flask import request
 from flask import Flask
 import paho.mqtt.client as mqtt
 
-client = mqtt.Client()
+client = mqtt.paho.Client()
 client.username_pw_set(Config.MQTT_USER, Config.MQTT_PWD)
 client.connect(Config.MQTT_HOST, Config.MQTT_PORT)
 client.publish("topic/test", "Hello world!");
