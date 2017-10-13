@@ -49,7 +49,8 @@ def facebookWebHook():
         client = paho.Client()
         client.username_pw_set(MQTT_USER, MQTT_PWD)
         client.connect(MQTT_HOST, MQTT_PORT)
-        client.publish("topic/test", "LIKE by (user ID:) " + ['entry'][0]['changes'][0]['value']['sender_id'])
+        #client.publish("topic/test", "LIKE by (user ID:) " + ['entry'][0]['changes'][0]['value']['sender_id'])
+        client.publish("topic/test", "LIKE")
         client.disconnect()
     return ""
 
