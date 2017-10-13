@@ -42,13 +42,8 @@ def postman():
 #Post request
 @app.route('/webhook', methods=['POST'])
 def facebookWebHook():
-    #jsonDictionary = request.get_json()
-    client = paho.Client()
-    client.username_pw_set(MQTT_USER, MQTT_PWD)
-    client.connect(MQTT_HOST, MQTT_PORT)
-    client.publish("topic/test", "facebookWebHook")
-    client.disconnect()
-    logging.warning("facebookWebHook()")
+    jsonDictionary = request.get_json()
+    logging.warning("facebookWebHook()" + str(jsonDictionary))
     return ""
 
 
