@@ -44,12 +44,12 @@ def postman():
 def facebookWebHook():
     jsonDictionary = request.get_json()
     logging.warning("facebookWebHook()" + str(jsonDictionary))
-
+#{'entry': [{'changes': [{'field': 'feed', 'value': {'item': 'like', 'verb': 'add', 'sender_id': '1633745866646608'}}], 'id': '277760066054272', 'time': 1507885989}], 'object': 'page'}
     if jsonDictionary['entry'][0]['changes'][0]['value']['item'] == 'like':
         client = paho.Client()
         client.username_pw_set(MQTT_USER, MQTT_PWD)
         client.connect(MQTT_HOST, MQTT_PORT)
-        client.publish("topic/test", "LIKE by (user ID:) " + jsonDictionary['user_id'])
+        client.publish("topic/test", "LIKE by (user ID:) " + ['entry'][0]['changes'][0]['value']['sender_id'])
         client.disconnect()
     return ""
 
