@@ -18,11 +18,16 @@ client.disconnect()
 
 app = Flask(__name__)
 
+#Default
+@app.route('/')
+def helloWorld():
+    return "Hello, World!"
 
 #Get request
 @app.route('/', methods=['GET'])
-def helloWorld():
-    return "Hello, World!"
+def verify():
+    """webhook api"""
+    return request.args.get('hub.challenge')
 
 #Post request
 @app.route('/', methods=['POST'])
