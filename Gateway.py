@@ -24,13 +24,13 @@ def helloWorld():
     return "Hello, World!"
 
 #Get request
-@app.route('/', methods=['GET'])
+@app.route('/webhook', methods=['GET'])
 def verify():
     """webhook api"""
     return request.args.get('hub.challenge')
 
 #Post request
-@app.route('/', methods=['POST'])
+@app.route('/webhook', methods=['POST'])
 def facebookWebHook():
     jsonDictionary = request.get_json()
     logging.warning(jsonDictionary["name"])
