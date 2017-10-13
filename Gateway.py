@@ -21,6 +21,7 @@ app = Flask(__name__)
 #Default
 @app.route('/')
 def helloWorld():
+    logging.warning("helloWorld()")
     return "Hello, World!"
 
 #Get request
@@ -38,7 +39,7 @@ def facebookWebHook():
 
     #if jsonDictionary['entry'][0]['changes'][0]['value']['item'] == 'like':
 
-    logging.info('Handled webhook request ' + str(jsonDictionary))
-    return ''
+    logging.warning('Handled webhook request ' + str(jsonDictionary))
+    return 'post'
 
 app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
