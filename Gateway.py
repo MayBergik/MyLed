@@ -3,14 +3,14 @@ import os
 import logging
 from flask import request
 from flask import Flask
-"""
+
 import paho.mqtt.client as paho
 
 MQTT_HOST = os.environ.get("MQTT_HOST", '')
 MQTT_USER = os.environ.get("MQTT_USER", '')
 MQTT_PWD = os.environ.get("MQTT_PWD", '')
 MQTT_PORT = int(os.environ.get("MQTT_PORT", 5001))
-
+"""
 client = paho.Client()
 client.username_pw_set(MQTT_USER, MQTT_PWD)
 client.connect(MQTT_HOST, MQTT_PORT)
@@ -43,10 +43,12 @@ def postman():
 @app.route('/webhook', methods=['POST'])
 def facebookWebHook():
     #jsonDictionary = request.get_json()
+    client = paho.Client()
+    client.username_pw_set(MQTT_USER, MQTT_PWD)
+    client.connect(MQTT_HOST, MQTT_PORT)
+    client.publish("topic/test", "facebookWebHook")
+    client.disconnect()
     logging.warning("facebookWebHook()")
-    #if jsonDictionary['entry'][0]['changes'][0]['value']['item'] == 'like':
-
-    #logging.warning('Handled webhook request ' + str(jsonDictionary))
     return ""
 
 
