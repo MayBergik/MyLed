@@ -33,7 +33,12 @@ def verify():
 @app.route('/webhook', methods=['POST'])
 def facebookWebHook():
     jsonDictionary = request.get_json()
-    logging.warning(jsonDictionary["name"])
-    return "Post!"
+    #logging.warning(jsonDictionary["name"])
+    #return "Post!"
+
+    #if jsonDictionary['entry'][0]['changes'][0]['value']['item'] == 'like':
+
+    logging.info('Handled webhook request ' + str(jsonDictionary))
+    return ''
 
 app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
